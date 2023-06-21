@@ -29,8 +29,10 @@ export class HomeComponent {
   filteredLocationList: Housinglocation[] = [];
 
   constructor() {
-    this.housingLocationList = this.housingService.getAllHousingLocations();
-    this.filteredLocationList = this.housingLocationList;
+    this.housingService.getAllHousingLocation().then((housingLocationList: Housinglocation[]) => {
+      this.housingLocationList = housingLocationList;
+      this.filteredLocationList = housingLocationList;
+    })
   }
 
   filterResults(text: String) {
